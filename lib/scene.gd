@@ -1,0 +1,1 @@
+class_name AnimatedScene extends Node2D
