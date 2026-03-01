@@ -5,13 +5,14 @@ class_name SceneData extends Resource
 #setup scene variables to hold by the Scene Node
 @export var variables: Dictionary[String,int] = {}
 
-var _animations : Array[SpriteAnimation] = []
+var _playlist : Array[SpriteAnimation] = []
 
 func load( ):
 	for i in pictures:
 		var animation = pictures[i].createanimation()
-		if animation : _animations.append(animation)
+		if animation : _playlist.append(animation)
 			
 
-func animations() -> Array[SpriteAnimation] : return _animations
-func count() -> int : return _animations.size()
+func animations() -> Array[SpriteAnimation] : return _playlist
+
+func count() -> int : return _playlist.size()

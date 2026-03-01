@@ -20,3 +20,14 @@ func texture() -> Texture2D:
 	return _buffer
 
 func createanimation( ) -> SpriteAnimation: return SpriteAnimation.new( self )
+
+#picture frame size
+func size( framed : bool = false ) -> Vector2i:
+	var picture = texture()
+	return Vector2i(
+		picture.get_width() / spritesheet.cols if framed else picture.get_width(),
+		picture.get_height() / spritesheet.rows if framed else picture.get_height()
+	) if texture else Vector2i.ZERO
+
+
+	

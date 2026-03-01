@@ -5,6 +5,9 @@ var _spritesheet : SpriteData  = null
 var _loop : AnimationLoop = null
 var _playing = false
 
+var _position : Vector2i = Vector2i.ZERO
+var _scale : Vector2 = Vector2.ONE
+
 func _init( picture : PictureData ):
 	_picture = picture
 	_spritesheet = _picture.spritesheet if _picture else null
@@ -35,3 +38,18 @@ func update() -> bool:
 			pass
 		return true
 	return false
+
+func scale() -> Vector2 : return _scale
+
+func position( ) -> Vector2i : return _position
+
+func rectview( scaled :int = false) -> Rect2i :
+	var size = _picture.size(true)
+	if scaled: size *= scale()
+	return Rect2i( Vector2i.ZERO, size )
+	
+func left() -> int : return position().x
+func right() -> int : return position().x + rectview(true).size.x
+
+func top() -> int : return position().y
+func bottom() -> int : return position().y + rectview(true).size.y

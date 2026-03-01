@@ -2,6 +2,7 @@ class_name AnimatedScene extends Node2D
 
 #define the scene sprites
 @export var pictures : Array[PictureData] = []
+@export var size : Vector2i = Vector2i(600,400)
 
 var _animations : Array[SpriteAnimation] = []
 

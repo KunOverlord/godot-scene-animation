@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="SpriteData" load_steps=8 format=3 uid="uid://dw4g5rexym3r8"]
+
+[ext_resource type="Script" uid="uid://bpuc1fanqlv5y" path="res://lib/data/frameset.gd" id="1_lq64d"]
+[ext_resource type="Script" uid="uid://d3cl3ctx0n0b2" path="res://lib/data/spots/spot.gd" id="2_pj1pd"]
+[ext_resource type="Script" uid="uid://yqirrtfvxypr" path="res://lib/data/sprite.gd" id="3_tglc4"]
+
+[sub_resource type="Resource" id="Resource_d27dq"]
+script = ExtResource("1_lq64d")
+loops = 4
+frames = Array[int]([0, 1, 2, 3])
+metadata/_custom_type_script = "uid://bpuc1fanqlv5y"
+
+[sub_resource type="Resource" id="Resource_y0j2h"]
+script = ExtResource("1_lq64d")
+loops = 4
+frames = Array[int]([4, 5, 6, 7])
+metadata/_custom_type_script = "uid://bpuc1fanqlv5y"
+
+[sub_resource type="Resource" id="Resource_olijr"]
+script = ExtResource("1_lq64d")
+loops = 4
+frames = Array[int]([8, 9, 10, 11])
+metadata/_custom_type_script = "uid://bpuc1fanqlv5y"
+
+[sub_resource type="Resource" id="Resource_kviuw"]
+script = ExtResource("1_lq64d")
+loops = 4
+frames = Array[int]([12, 13, 14, 15])
+metadata/_custom_type_script = "uid://bpuc1fanqlv5y"
+
+[resource]
+script = ExtResource("3_tglc4")
+cols = 4
+rows = 4
+framesets = Array[ExtResource("1_lq64d")]([SubResource("Resource_d27dq"), SubResource("Resource_y0j2h"), SubResource("Resource_olijr"), SubResource("Resource_kviuw")])
+metadata/_custom_type_script = "uid://yqirrtfvxypr"
