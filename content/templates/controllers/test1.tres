@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SpriteData" load_steps=5 format=3 uid="uid://c6dkk7hva0r2e"]
 
-[ext_resource type="Script" uid="uid://bpuc1fanqlv5y" path="res://lib/data/frame_data.gd" id="1_vvy5x"]
-[ext_resource type="Script" uid="uid://d3cl3ctx0n0b2" path="res://lib/data/spots/hotspot.gd" id="2_bs8cs"]
-[ext_resource type="Script" uid="uid://cqtvgsqi1o8e1" path="res://lib/data/picture_data.gd" id="3_03oq4"]
-[ext_resource type="Script" uid="uid://yqirrtfvxypr" path="res://lib/data/sprite_data.gd" id="4_aajpy"]
+[ext_resource type="Script" uid="uid://bpuc1fanqlv5y" path="res://lib/data/frameset.gd" id="1_vvy5x"]
+[ext_resource type="Script" uid="uid://d3cl3ctx0n0b2" path="res://lib/data/spots/spot.gd" id="2_bs8cs"]
+[ext_resource type="Script" uid="uid://cqtvgsqi1o8e1" path="res://lib/data/picture.gd" id="3_03oq4"]
+[ext_resource type="Script" uid="uid://yqirrtfvxypr" path="res://lib/data/sprite.gd" id="4_aajpy"]
 
 [resource]
 script = ExtResource("4_aajpy")

@@ -1,6 +1,6 @@
 [gd_resource type="Texture2D" script_class="PictureData" load_steps=2 format=3 uid="uid://oeb8riiakdy5"]
 
-[ext_resource type="Script" uid="uid://cqtvgsqi1o8e1" path="res://lib/data/picture_data.gd" id="1_h34mr"]
+[ext_resource type="Script" uid="uid://cqtvgsqi1o8e1" path="res://lib/data/picture.gd" id="1_h34mr"]
 
 [resource]
 resource_local_to_scene = false
