@@ -1,25 +1,37 @@
 class_name SpriteAnimation
 
 var _picture : PictureData = null
-var _spritesheet : SpriteData  = null
+var _animation : AnimationData  = null
 var _loop : AnimationLoop = null
 var _playing = false
 
-var _position : Vector2i = Vector2i.ZERO
-var _scale : Vector2 = Vector2.ONE
-
-func _init( picture : PictureData ):
+func _init( picture : PictureData , animation : AnimationData = null):
 	_picture = picture
-	_spritesheet = _picture.spritesheet if _picture else null
-	play(first())
+	if animation:
+		_animation = animation
+		play(first())
 
-func framesets() -> Array[FrameData]: return spritesheet().framesets
-func frameset( name : String ) -> FrameData : return spritesheet().frameset(name)
+##identity
 func alias() -> String: return _picture.alias() if _picture else ""
-func spritesheet() -> SpriteData: return _spritesheet
+func sprite() -> AnimationData: return _animation
+func texture() -> Texture2D : return _picture.texture() if _picture else null
+func ready() -> bool : return texture() != null
+
+## definition
+func cols() -> int :
+	return _animation.cols if _animation else 1
+func rows() -> int :
+	return _animation.rows if _animation else 1
+func type() -> AnimationData.SpriteType :
+	return _animation.type if _animation else AnimationData.SpriteType.Static
+
+
+## frameset and loop related data
+func framesets() -> Array[FrameData]: return sprite().framesets
+func frameset( name : String ) -> FrameData : return sprite().frameset(name)
 func loop() -> AnimationLoop : return _loop
 
-func first() -> String: return _spritesheet.first().name if _spritesheet and _spritesheet.first() else ""
+func first() -> String: return _animation.first().name if _animation and _animation.first() else ""
 func playing() -> bool : return _playing
 func stop(): _playing = false
 
@@ -39,12 +51,21 @@ func update() -> bool:
 		return true
 	return false
 
-func scale() -> Vector2 : return _scale
+## spatial
+func size( framed : bool = false ) -> Vector2i :
+	return Vector2i(
+		size().x / cols(),
+		size().y / rows()
+	) if framed else _picture.size()
 
-func position( ) -> Vector2i : return _position
+func scale() -> Vector2 :
+	return _picture.scale if _picture else Vector2.ONE
+
+func position( ) -> Vector2i :
+	return _picture.position if _picture else Vector2i.ZERO
 
 func rectview( scaled :int = false) -> Rect2i :
-	var size = _picture.size(true)
+	var size = size()
 	if scaled: size *= scale()
 	return Rect2i( Vector2i.ZERO, size )
 	

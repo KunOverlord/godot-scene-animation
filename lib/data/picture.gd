@@ -1,33 +1,26 @@
 class_name PictureData extends Resource
 
 @export var name : String = ""
-@export_file("*.png", "*.jpg", "*.jpeg", "*.webp") var bitmap: String
-@export var tags : Array[String] = []
-@export var spritesheet : SpriteData = null
-#
+@export_file("*.png", "*.jpg", "*.jpeg", "*.webp") var picture: String
+@export var position : Vector2i = Vector2i.ZERO
+@export var scale : Vector2 = Vector2.ONE
+
 var _buffer : Texture2D = null;
 
-func _init():
-	if !spritesheet:
-		spritesheet = SpriteData.new()
-		spritesheet.type = SpriteData.SpriteType.Empty
+func _init(): pass
 
-func alias() -> String : return name if name.length() else bitmap
-func picture_tags() -> Array[String] : return tags
+func alias() -> String : return name if name.length() else picture
+
 func texture() -> Texture2D:
-	if !bitmap.is_empty():
-		_buffer = load(bitmap)
+	if !picture.is_empty(): _buffer = load(picture)
 	return _buffer
 
-func createanimation( ) -> SpriteAnimation: return SpriteAnimation.new( self )
-
-#picture frame size
-func size( framed : bool = false ) -> Vector2i:
-	var picture = texture()
+func size( ) -> Vector2i:
+	var t = texture()
 	return Vector2i(
-		picture.get_width() / spritesheet.cols if framed else picture.get_width(),
-		picture.get_height() / spritesheet.rows if framed else picture.get_height()
-	) if texture else Vector2i.ZERO
+		t.get_width(),
+		t.get_height()
+	) if t else Vector2i.ZERO
 
 
 	
